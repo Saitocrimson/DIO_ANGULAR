@@ -1,0 +1,42 @@
+*{
+    background-color:#23222b ;
+    color:beige;
+    font-family: "Roboto";
+    box-sizing: border-box;
+
+    
+}
+
+h1{
+color: aliceblue;
+}
+.content{
+    padding: 1rem;
+}
+#pokemons{
+    display:grid;
+    grid-template-columns: 1fr 1fr;
+    list-style: none;
+}
+
+img{
+    background-color: #90d184;
+    max-height: 40px;
+    align-self: flex-end;
+}
+#pokemons li{
+
+    color:rgb(22, 22, 8);
+    height: 90px;
+    width: 170px;
+
+    display:flex;
+    flex-direction: column;
+   
+    margin:0.5rem;
+    padding:1rem;
+    background-color: #90d184;
+    border-radius:1rem;
+    ;
+
+}
