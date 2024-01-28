@@ -1,6 +1,4 @@
-const  offset=0
-const limit=20
-const url=`https://pokeapi.co/api/v2/pokemon/?offset=${offset}&limit=${limit}`
+
 var grupo =document.getElementById("grupo_todo")
 function convertejsonhtml(pokemon){
     return `
@@ -23,20 +21,16 @@ function convertejsonhtml(pokemon){
 }
 
 
-fetch(url).then( (response)=>{
-    return response.json()
-})
-.then((jsonBody)=>
-    //debugger->breakpoint
-    jsonBody.results
-)
+
+poke_api.getPokemons()
 .then((pokelistaa)=>{
-    for (let i=0;i<pokelistaa.length;i++){
+    grupo.innerHTML+=pokelistaa.map(convertejsonhtml).join("")
+    /*var pocket=pokelistaa.map((item)=>{
+        return convertejsonhtml(item)})
         
-        console.log(convertejsonhtml(pokelistaa[i]))
-        grupo.innerHTML+=convertejsonhtml(pokelistaa[i])
-    }
-    console.log(pokelistaa)
+    grupo.innerHTML+=pocket.join("")
+*/
+   
 })
 .catch(function (error){
     console.log(error)
