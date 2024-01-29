@@ -1,16 +1,20 @@
 const poke_api={}
+poke_api.getDetalhe=(mons)=>{
+    return fetch(mons.url).then((response)=> response.json())
+    
+    }
+poke_api.getPokemons=function(offset=0,limit=9){
 
-poke_api.getPokemons=function(offset=0,limit=20){
- 
 const url=`https://pokeapi.co/api/v2/pokemon/?offset=${offset}&limit=${limit}`
 return fetch(url)
 .then( (response)=>{
     return response.json()
 })
-.then((jsonBody)=>
+.then((jsonBody)=> jsonBody.results)
     //debugger->breakpoint
-    jsonBody.results
-)
+.then((mons)=>mons.map(poke_api.getDetalhe))
+.then((detalhe)=>Promise.all(detalhe))
+.then((promessa_detalhe)=> promessa_detalhe)
 .catch(function (error){
     console.log(error)
 })

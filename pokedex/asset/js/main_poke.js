@@ -1,21 +1,28 @@
 
 var grupo =document.getElementById("grupo_todo")
+function convertedadospoke(pokemons){
+    return pokemons.map((typeSlot)=>`<li class='tipos'>${typeSlot.type.name}</li>`)
+    
+}
+
+
 function convertejsonhtml(pokemon){
     return `
 
     <li class="pokemon">
-                <span class="number">#001</span> 
+                <span class="number">#${pokemon.order}</span> 
                 <span class="name">${pokemon.name}</span>
                
                
                 <div class="detalhe">
                     <ol class="type">
-                        <li class="types">glass </li>
+                       ${convertedadospoke(pokemon.types).join('')}
                         
-                        <li class="types">poison</li>
+                        
                                
                     </ol>
-                    <img src="https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/dream-world/1.svg" alt=${pokemon.name}>
+
+                    <img src=${pokemon.sprites.other.dream_world.front_default} alt=${pokemon.name}>
                 </div>
         </li>`
 }
