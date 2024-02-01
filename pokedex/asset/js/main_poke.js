@@ -1,28 +1,21 @@
 
 var grupo =document.getElementById("grupo_todo")
-function convertedadospoke(pokemons){
+/*function convertedadospoke(pokemons){
     return pokemons.map((typeSlot)=>`<li class='tipos'>${typeSlot.type.name}</li>`)
     
-}
+}*/
 
 
 function convertejsonhtml(pokemon){
-    return `
-
-    <li class="pokemon">
-                <span class="number">#${pokemon.order}</span> 
+    return `<li class="pokemon ${pokemon.type}">
+                <span class="number">#${pokemon.number}</span> 
                 <span class="name">${pokemon.name}</span>
-               
-               
                 <div class="detalhe">
                     <ol class="type">
-                       ${convertedadospoke(pokemon.types).join('')}
-                        
-                        
-                               
+                       ${pokemon.Types.map((type)=>`<li class="types ${type}">${type}</li>`).join('')}        
                     </ol>
 
-                    <img src=${pokemon.sprites.other.dream_world.front_default} alt=${pokemon.name}>
+                    <img src=${pokemon.photo} alt=${pokemon.name}>
                 </div>
         </li>`
 }

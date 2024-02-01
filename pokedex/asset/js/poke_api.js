@@ -1,6 +1,24 @@
 const poke_api={}
+
+function convertTudomon(tudomon){
+    var aux=new Tudomon()
+    aux.number=tudomon.order
+    console.log(aux.number)
+    aux.name=tudomon.name
+    tipo=tudomon.types.map((typeSlot)=>typeSlot.type.name)
+    const [t1]=tipo
+    aux.type=t1
+    aux.Types=tipo
+    aux.photo=tudomon.sprites.other.dream_world.front_default
+    return aux
+}
+
+
+
 poke_api.getDetalhe=(mons)=>{
-    return fetch(mons.url).then((response)=> response.json())
+    return fetch(mons.url)
+    .then((response)=> response.json())
+    .then(convertTudomon)
     
     }
 poke_api.getPokemons=function(offset=0,limit=9){
