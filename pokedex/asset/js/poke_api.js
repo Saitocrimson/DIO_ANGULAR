@@ -1,8 +1,10 @@
 const poke_api={}
 
+
+
 function convertTudomon(tudomon){
     var aux=new Tudomon()
-    aux.number=tudomon.order
+    aux.number=tudomon.id
     console.log(aux.number)
     aux.name=tudomon.name
     tipo=tudomon.types.map((typeSlot)=>typeSlot.type.name)
@@ -21,7 +23,7 @@ poke_api.getDetalhe=(mons)=>{
     .then(convertTudomon)
     
     }
-poke_api.getPokemons=function(offset=0,limit=9){
+poke_api.getPokemons=function(offset,limit){
 
 const url=`https://pokeapi.co/api/v2/pokemon/?offset=${offset}&limit=${limit}`
 return fetch(url)
